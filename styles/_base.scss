@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+$primary-font: 'Space Mono', sans-serif;
+
+// light mode colors
+$color-blue: #0079FF;
+$color-blue-1: #697C9A;
+$color-blue-2: #4B6A9B;
+$color-blue-3: #2B3442;
+$color-heading: #222731;
+$color-gray: #F6F8FF;
+$color-white: #FFFFFF;
+
+// dark mode colors
+$color-dark-1: #141D2F;
+$color-dark-2: #1E2A47;
+
+// mixin
+@mixin min-width($threshold) {
+    @media screen and (min-width: $threshold) {
+        @content;
+    }
+}
+html {
+    font-size: 62.5%;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: $primary-font;
+    font-size: 1.3rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+main {
+    width: 100%;
+    // height: 100vh;
+}
+
+.container {
+    padding: 3.2rem 2.4rem 4.8rem 2.4rem;
+    @include min-width(37rem) {
+        height: 100%;
+        max-width: 80vw;
+        margin: 0 auto;
+        padding: 14rem 0;
+    }
+    @include min-width(61rem) {
+        max-width: 73rem;
+        margin: 0 auto;
+        font-size: 1.5rem;
+    }
+}
+h1 {
+    color: $color-heading;
+    font-weight: 700;
+    font-size: 2.6rem;
+}
+h2 {
+    color: $color-blue-3;
+    font-size: 1.6rem;
+    @include min-width(61rem) {
+        font-size: 2.6rem;
+    }
+}
+    

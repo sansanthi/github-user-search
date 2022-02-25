@@ -1,0 +1,254 @@
+// main
+.light-theme {
+    background: $color-gray;
+    color: $color-blue-2;
+}
+.dark-theme {
+    background: $color-dark-1;
+    color: $color-white;
+
+    * {
+        color: $color-white;
+    }
+    .search input {
+        &::placeholder {
+            color: $color-white;
+        }
+    }
+    .card, .search, .search input {
+        background: $color-dark-2;
+    }
+    .account-info {
+        background: $color-dark-1;
+    }
+}
+// header
+header {
+    @include flex-display(row);
+    @include flex-position(space-between, center);
+    margin-bottom: 3.6rem;
+}
+
+.dark-mode, .dark-theme .light-mode {
+    @include flex-display(row, 1.6rem);
+    @include flex-position(center, center);
+}
+.mode {
+    text-transform: uppercase;
+    letter-spacing: 0.25rem;
+    font-weight: 700;
+}
+.light-mode, .dark-theme .dark-mode {
+    display: none;
+}
+//search input
+.search {
+    width: 100%;
+    background: $color-white;
+    padding: 0.65rem 0.7rem 0.65rem 1.6rem;
+    box-shadow: 0 0.5rem 1rem rgba($color: #000000, $alpha: 0.05);
+    border-radius: 1.5rem;
+    margin-bottom: 1.6rem;
+    @include flex-display(row, 0.5rem);
+    @include flex-position(space-between, center);
+    
+    &--input {
+        flex-grow: 1;
+        border-color: transparent;
+        outline: none;
+        background: $color-white;
+        &:hover, :focus, &:active {
+            outline: none;
+            background: transparent;
+        }
+        &::placeholder {
+            font-family: $primary-font;
+            font-size: 1.3rem;
+        }
+    }
+    &--error {
+        color: #F74646;
+        font-weight: 700;
+        margin-right: 0.9rem;
+        display: none;
+    }
+    &--btn {
+        font-family: $primary-font;
+        font-size: 1.4rem;
+        font-weight: 700;
+        padding: 1.25rem;
+        border-radius: 1.5rem;
+        border: 1px solid transparent;
+        background: $color-blue;
+        color: $color-white;
+    }
+    // media query
+    @include min-width(61rem) {
+        padding: 0.95rem 1rem 0.95rem 3.2rem;
+        // padding-left: 3.2rem;
+        margin-bottom: 2.4rem;
+        font-size: 1.5rem;
+        gap: 1.5rem;
+        &--input {
+            &::placeholder {
+            font-size: 1.8rem;
+            }
+        }
+        &--btn {
+            font-size: 1.6rem;
+            padding: 1.25rem 2.4rem;
+        }
+    }
+}
+
+//user card
+.card {
+    padding: 3.2rem 2rem 4.8rem 2rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 1rem 1rem rgba($color: #000000, $alpha: 0.1);
+    background: $color-white;
+    
+    &--heading {
+        margin-bottom: 3.4rem;
+        // @include grid-display();
+        // grid-template-columns: 1fr 2fr;
+        @include flex-display(row, 1.9rem);
+        @include flex-position(flex-start, flex-start);
+    }
+    // &--body {
+        
+    // }
+    &--footer {
+        @include flex-display(column, 1.6rem);
+
+        @include min-width(37rem) {
+            @include grid-display();
+            grid-template-columns: repeat(2, 1fr);
+            .twitter-account{
+                grid-column: 2/-1;
+                grid-row: 1;
+            }
+        }
+    }
+
+    @include min-width(37rem) {
+        padding: 4rem;
+    }
+    @include min-width(61rem) {
+        padding: 4.4rem 4.8rem;
+        @include grid-display();
+        grid-template-columns: 1fr 3fr;
+        // grid-template-areas: "header header"
+        //                      "aside content"
+        //                      "aside footer";
+
+        &--heading {
+            // grid-area: header;
+            margin-bottom: 0;
+            gap: 0;
+            grid-column: 1/-1;
+            @include grid-display();
+            grid-template-columns: 1fr 3fr;
+        }
+
+        &--body {
+            grid-column: 2/-1;
+            // grid-area: content;
+            // @include grid-display();
+            // grid-template-columns: repeat(2,1fr);
+            // .user-info, .account-info {
+            //     grid-column: 2/-1;
+            // }
+        }
+        &--footer {
+            grid-column: 2/-1;
+            // grid-area: footer;
+            // @include grid-display();
+            // grid-template-areas: "aside content";
+            // .contact-info {
+            //     grid-area: content;
+            // }
+        }
+
+    }
+}
+
+.user-profile {
+    width: 7rem;
+    height: 7rem;
+    align-self: center;
+
+    &--img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        // height: 7rem;
+        border-radius: 50%;
+        @include min-width(61rem) {
+            width: 11.7rem;
+            height: 11.7rem;
+        }
+    }
+}
+
+.user {
+
+    @include flex-display(column, 0.6rem);
+
+    &--account {
+        color: $color-blue;
+        // margin-bottom: 0.6rem;
+    }
+    @include min-width(61rem) {
+        margin-bottom: 2rem;
+        @include flex-display(row);
+        @include flex-position(space-between, flex-start);
+    }
+}
+.user-bio {
+    margin-bottom: 3.2rem;
+    line-height: 2.5;
+
+    @include min-width(61rem) {
+        line-height: 1.5;
+    }
+}
+.account-info {
+    background: $color-gray;
+    padding: 1.8rem 0;
+    border-radius: 1rem;
+    text-align: center;
+    margin-bottom: 2.4rem;
+    @include flex-display(row);
+    @include flex-position(space-evenly, center);
+    h2 {
+        font-size: 1.6rem;
+    }
+    @include min-width(61rem) {
+        text-align: left;
+        h2 {
+            font-size: 2.2rem;
+        }
+    }
+}
+
+// card footer
+.contact-info {
+    @include flex-display(row, 1.925rem);
+
+    a {
+        color: $color-blue-2;
+        text-decoration: none;
+
+        &:hover, &:active {
+            text-decoration: underline;
+        }
+    }
+}
+.not-able {
+    opacity: 0.4;
+    // color: rgba($color: $color-blue-2, $alpha: 0.5);
+}
+// .not-able svg {
+//     fill: rgba($color: $color-blue-2, $alpha: 0.5);;
+// }

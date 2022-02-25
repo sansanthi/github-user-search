@@ -1,0 +1,16 @@
+@mixin flex-display($direction, $gap: null) {
+    display: flex;
+    flex-direction: $direction;
+    @if $gap != null {
+        gap: $gap;
+    }
+}
+
+@mixin flex-position($row, $column) {
+    justify-content: $row;
+    align-items: $column;
+}
+
+@mixin  grid-display() {
+    display: grid;
+}
